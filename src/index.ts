@@ -1,8 +1,8 @@
 import express, { Application, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config';
+import cors from 'cors';
 
-import categoryRoutes from './routes/categories.route';
 import expenseRoutes from './routes/expenses.route';
 
 // Initialize app
@@ -10,6 +10,7 @@ const app: Application = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // Database connection
 const mongoUri = process.env.MONGO_URI;
@@ -37,7 +38,6 @@ app.get('/api/v1/test', async (req: Request, res: Response): Promise<void> => {
     });
   }
 });
-app.use('/api/v1/categories', categoryRoutes);
 app.use('/api/v1/expenses', expenseRoutes);
 
 // Server Initialization

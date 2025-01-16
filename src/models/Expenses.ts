@@ -2,10 +2,6 @@ import mongoose, { Schema } from 'mongoose';
 
 const expenceSchema = new mongoose.Schema(
   {
-    categoryId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Categories',
-    },
     title: {
       type: String,
       required: [true, 'Title is required'],
